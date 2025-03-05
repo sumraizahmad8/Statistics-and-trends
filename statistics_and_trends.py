@@ -18,7 +18,12 @@ import scipy.stats as ss
 def plot_relational_plot(df):
     """
     Creates a scatter plot of total participation vs. total medals.
-    Saves the plot as 'relational_plot.png'.
+    
+    Parameters:
+        df (DataFrame): The dataset.
+    
+    Saves:
+        relational_plot.png
     """
     fig, ax = plt.subplots(figsize=(10, 6))
     sns.scatterplot(x=df["total_participation"], y=df["total_total"], alpha=0.7)
@@ -33,7 +38,12 @@ def plot_relational_plot(df):
 def plot_categorical_plot(df):
     """
     Creates a bar chart of the top 10 countries by total gold medals.
-    Saves the plot as 'categorical_plot.png'.
+    
+    Parameters:
+        df (DataFrame): The dataset.
+    
+    Saves:
+        categorical_plot.png
     """
     top_countries = df.nlargest(10, "total_gold")
     fig, ax = plt.subplots(figsize=(12, 6))
@@ -49,7 +59,12 @@ def plot_categorical_plot(df):
 def plot_statistical_plot(df):
     """
     Creates a correlation heatmap for numerical variables.
-    Saves the plot as 'statistical_plot.png'.
+    
+    Parameters:
+        df (DataFrame): The dataset.
+    
+    Saves:
+        statistical_plot.png
     """
     fig, ax = plt.subplots(figsize=(12, 6))
     sns.heatmap(df.corr(numeric_only=True), annot=True, cmap="coolwarm", fmt=".2f", linewidths=0.5, ax=ax)
@@ -67,7 +82,7 @@ def statistical_analysis(df, col: str):
         col (str): Column name for statistical analysis.
 
     Returns:
-        tuple: Mean, Standard Deviation, Skewness, Excess Kurtosis
+        tuple: (Mean, Standard Deviation, Skewness, Excess Kurtosis)
     """
     mean = df[col].mean()
     stddev = df[col].std()
